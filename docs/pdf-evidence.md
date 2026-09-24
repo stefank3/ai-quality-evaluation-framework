@@ -8,6 +8,8 @@ Validation checks the `%PDF-` signature, nonzero page count, reasonable size (10
 
 The reviewed workbook contains 32 A4 pages: title, contents and 30 study units. The PDF is approximately 72 KB; exact bytes and SHA-256 are recorded in milestone validation evidence rather than embedded in the PDF itself.
 
+Implementation source snapshot: `424204c4d0336cd89afb1b3d53180ad5c2849dac`. The final milestone commit records that snapshot in the canonical title page and regenerates the PDF. This two-commit sequence is one implementation milestone and prevents a self-referential commit hash inside its own generated artifact.
+
 Visual review uses Poppler to render all pages, followed by contact-sheet inspection and full-page inspection of representative title, contents and code pages. The initial review identified an avoidable contents spill; its spacing was corrected before final generation. No clipped content or overlapping elements remained in the reviewed output.
 
 To repeat the visual check with Poppler installed:

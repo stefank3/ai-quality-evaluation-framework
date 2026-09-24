@@ -8,11 +8,11 @@ Version: 1.0.0
 
 Generation date: 2026-09-24
 
-Source commit: 2e3244f9a3192ba0cf3c5a422551108eaea0c1eb (verified initialization baseline; implementation content is the accompanying versioned source tree).
+Source commit: 424204c4d0336cd89afb1b3d53180ad5c2849dac (validated implementation snapshot).
 
 Author: Stefan Kajchevski
 
-This workbook explains the implemented synthetic Aster assistant evaluation framework. It is a study resource and a record of design decisions, not a certification of model safety. The Markdown is canonical; the PDF is generated locally from this text. The title-page source reference identifies the baseline used while authoring, not a claim that the initialization commit contained the implementation.
+This workbook explains the implemented synthetic Aster assistant evaluation framework. It is a study resource and a record of design decisions, not a certification of model safety. The Markdown is canonical; the PDF is generated locally from this text. The source commit contains the validated implementation. The final milestone commit adds this provenance reference and the regenerated PDF, avoiding a circular self-reference.
 
 Read with the repository open. Each unit includes a concrete inspection or exercise and an expected outcome. All exercises are offline unless explicitly described as conceptual discussion. Do not run live evaluation as part of this workbook.
 
