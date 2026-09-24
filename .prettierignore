@@ -1,0 +1,8 @@
+# Formatting boundary: preserve generated artifacts and ignore local runtime directories.
+package-lock.json
+dist
+reports
+tmp
+guide/*.pdf
+examples/*.json
+examples/deterministic-report.md

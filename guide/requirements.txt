@@ -1,0 +1,4 @@
+# Isolated local PDF tooling; install with python -m pip install -r guide/requirements.txt.
+# Not needed by npm ci, evaluation, tests, build or primary validation.
+reportlab==4.4.9
+pypdf==6.10.0

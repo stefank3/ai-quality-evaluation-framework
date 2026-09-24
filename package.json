@@ -1,0 +1,39 @@
+{
+  "name": "ai-quality-evaluation-framework",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deterministic synthetic AI assistant evaluation and fault detection workbook",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.13.0 <25",
+    "npm": ">=11 <12"
+  },
+  "scripts": {
+    "doctor": "node scripts/tasks.mjs doctor",
+    "format": "node scripts/tasks.mjs format",
+    "format:check": "node scripts/tasks.mjs format:check",
+    "lint": "node scripts/tasks.mjs lint",
+    "typecheck": "node scripts/tasks.mjs typecheck",
+    "test": "node scripts/tasks.mjs test",
+    "eval": "node scripts/tasks.mjs eval",
+    "eval:list": "node scripts/tasks.mjs list",
+    "eval:live": "node scripts/tasks.mjs live",
+    "build": "node scripts/tasks.mjs build",
+    "check:repository": "node scripts/tasks.mjs repository",
+    "docs:pdf": "node scripts/tasks.mjs pdf",
+    "validate": "node scripts/tasks.mjs validate"
+  },
+  "dependencies": {
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.6",
+    "eslint": "10.11.0",
+    "prettier": "3.9.9",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.70.1",
+    "vitest": "5.0.1"
+  }
+}

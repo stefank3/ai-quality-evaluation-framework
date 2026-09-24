@@ -1,0 +1,13 @@
+# Git exclusion boundary: local dependencies, sensitive settings and runtime outputs stay local.
+node_modules/
+dist/
+reports/
+tmp/
+coverage/
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+*.log
+__pycache__/
