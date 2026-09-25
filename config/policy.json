@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "caseThreshold": 0.95,
   "runThreshold": 0.95,
   "groundingThreshold": 0.7,

@@ -11,7 +11,7 @@ Start with the [file-by-file code walkthrough](docs/code-walkthrough.md), [techn
 ```text
 CLI -> validated config -> JSONL + knowledge + fixtures + policy
     -> ModelAdapter -> 10 independent evaluators
-    -> weighted scoring + critical overrides -> JSON/Markdown -> exit code
+    -> weighted scoring + all-evaluator gates -> JSON/Markdown -> exit code
 ```
 
 A test-focused modular monolith keeps dataset boundaries, adapters, measurements, aggregation and reporting separate without operational infrastructure. Node 24, strict TypeScript, Zod and Vitest support a small, inspectable design. See [architecture](docs/architecture.md).
@@ -23,7 +23,7 @@ Install Node **>=24.13 <25** and npm **>=11 <12**, then run from the repository 
 ```sh
 git clone https://github.com/stefank3/ai-quality-evaluation-framework.git
 cd ai-quality-evaluation-framework
-git checkout milestone/1-evaluation-foundation
+git checkout main
 npm ci --ignore-scripts
 npm run doctor
 npm run validate

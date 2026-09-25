@@ -1,7 +1,8 @@
 /** Deterministic network-denial preload. Invoked by npm tasks and Vitest setup; no args,
  * env or files. Replaces Node fetch/socket/HTTP/DNS entry points before application imports.
  * Attempts throw a fixed error (task exits nonzero if uncaught). Child Node tasks inherit
- * NODE_OPTIONS from tasks.mjs. This is an accidental-egress guard, not a hostile-code sandbox. */
+ * NODE_OPTIONS from tasks.mjs. Covered main/child-process paths prevent accidental egress;
+ * this is not an OS sandbox. Worker threads are outside the supported execution model. */
 import { syncBuiltinESMExports } from "node:module";
 import net from "node:net";
 import tls from "node:tls";

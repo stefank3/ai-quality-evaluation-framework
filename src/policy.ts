@@ -1,6 +1,7 @@
 /** Versioned scoring boundary called by runner and repository tests. Validates policy
  * data and combines unique evaluator results into case/run verdicts; no I/O.
- * Missing/duplicate measurements fail closed, and critical failures override scores. */
+ * Missing/duplicate measurements fail closed. Every evaluator must pass; weighted
+ * credit cannot rescue any failure, including a critical failure. */
 import { z } from "zod";
 import {
   EvaluatorIdSchema,
@@ -12,7 +13,7 @@ import { EvaluationError } from "./errors.js";
 const threshold = z.number().finite().min(0).max(1);
 /** Strict policy schema requires every evaluator and positive, visible weights. */
 export const PolicySchema = z.strictObject({
-  version: z.literal("1.0.0"),
+  version: z.literal("1.0.1"),
   caseThreshold: threshold,
   runThreshold: threshold,
   groundingThreshold: threshold,
@@ -51,7 +52,10 @@ export function scoreCase(
   return {
     caseId,
     score,
-    passed: !criticalFailure && score >= policy.caseThreshold,
+    passed:
+      !criticalFailure &&
+      results.every((result) => result.passed) &&
+      score >= policy.caseThreshold,
     results: structuredClone(results),
   };
 }

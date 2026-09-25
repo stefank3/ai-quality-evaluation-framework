@@ -18,7 +18,7 @@ Zod validates configuration, cases, documents, requests, response structure, pol
 
 The runner sends only case ID, user input and approved knowledge to adapters. Expectations, prohibited patterns and scoring policy remain evaluator concerns. Every adapter call receives a copy. Payloads and observations are copied before measurement; fixture construction and returned responses are isolated from caller mutation.
 
-Evaluators are pure, composable functions. The registry applies ten independent responsibilities in a stable order. Scoring requires exactly one result per evaluator, combines visible weights, and applies critical overrides. Reports contain safe metadata and measurements, never raw prompt/answer text.
+Evaluators are pure, composable functions. The registry applies ten independent responsibilities in a stable order. Scoring requires exactly one result per evaluator and combines visible weights. Every evaluator must pass, including all critical checks, and the weighted case score must meet 0.95. Scores remain diagnostic and comparable; weighted credit cannot rescue any evaluator failure. Reports contain safe metadata and measurements, never raw prompt/answer text.
 
 ## Technology decisions
 

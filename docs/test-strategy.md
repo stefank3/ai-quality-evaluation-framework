@@ -9,13 +9,15 @@ Tests prove bounded implementation behavior, not deployed model quality. Require
 | `tests/boundaries.test.ts` | Contract/boundary: opt-in, CI rejection, unsafe URLs, request shape, errors, timeouts, size and call bounds |
 | `tests/cli.test.ts`        | CLI integration: real process exits, listing, live denial and network-denial entry points                   |
 
-The regression oracle is an explicit mapping of case IDs to failing evaluator IDs. It is not generated from implementation output. A check disappearing, weakening or becoming over-sensitive changes this mapping and fails the suite. A negation example deliberately demonstrates that grounding overlap can pass a false statement.
+The regression oracle is an explicit mapping of case IDs to failing evaluator IDs. It is not generated from implementation output. A check disappearing, weakening or becoming over-sensitive changes this mapping and fails the suite. A negation example deliberately demonstrates that grounding overlap can pass a false statement. Boundary tests measure 699/1000 and 700/1000 token overlap against 0.7: evaluator and case verdicts agree even though both weighted scores exceed 0.95. Every evaluator failure fails the case. Marker tests cover prefixes/suffixes, zero-width splitting, Unicode width, punctuation variants and safe controls while ordinary prohibited phrases retain word boundaries. The privacy-refusal regression verifies `kb-privacy` context, citation and passing verdict.
+
+Behavioral configuration tests start from fully valid authorized settings, reject `CI="true"`, `CI=""` and `GITHUB_ACTIONS="true"`, accept manual settings outside CI and check case-count conversion/bounds. Adapter tests independently reject the same CI markers before the fake transport is called.
 
 ## Isolation
 
 `scripts/tasks.mjs` propagates the offline preload through `NODE_OPTIONS`; Vitest also loads it in worker setup. CLI tests explicitly preload it. Network probes call APIs only after replacement, so tests never intentionally reach a remote host. In-memory `fetch` functions exercise the live adapter contract; they return local `Response` objects or reject locally.
 
-The preload is an accidental-egress guard, not an OS sandbox against malicious dependencies. Installation downloads packages; malicious native code or arbitrary child executables are outside this guard. Review dependencies and use a separate OS network policy if evaluating untrusted code. None of the authored deterministic evaluation code opens a socket.
+The preload covers main-process and inherited Node child-process paths as an accidental-egress guard, not an OS sandbox against malicious dependencies. Worker threads are outside the supported framework execution model; Vitest uses process forks. Installation downloads packages; malicious native code or arbitrary child executables are outside this guard. Review dependencies and use a separate OS network policy if evaluating untrusted code. None of the authored deterministic evaluation code opens a socket.
 
 ## Gates
 

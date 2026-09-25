@@ -82,7 +82,7 @@ export const EvaluatorResultSchema = z.strictObject({
 });
 /** Deterministic measurement emitted by one evaluator. */
 export type EvaluatorResult = z.infer<typeof EvaluatorResultSchema>;
-/** Aggregated result with critical-failure override already applied. */
+/** Aggregated result with all-evaluator and critical-failure gates already applied. */
 export const CaseResultSchema = z.strictObject({
   caseId: id,
   score,

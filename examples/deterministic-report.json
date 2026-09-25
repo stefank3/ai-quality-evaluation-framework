@@ -1,9 +1,9 @@
 {
   "version": "1.0.0",
-  "runId": "fixture-v1:e102430e459467324cd40c1383d37d90a7c03cd509675ec0665ee7a5a16ece3a:all",
+  "runId": "fixture-v1:1613822feac1fbf028f93cd61e5f4c2c63354b4877be9559917fff04f506804c:all",
   "generatedAt": "2000-01-01T00:00:00.000Z",
-  "datasetDigest": "e102430e459467324cd40c1383d37d90a7c03cd509675ec0665ee7a5a16ece3a",
-  "policyDigest": "e38ea31619ae19ef7511a4c15caf51568f8e4b234273e34208d879c1ef2cef9f",
+  "datasetDigest": "1613822feac1fbf028f93cd61e5f4c2c63354b4877be9559917fff04f506804c",
+  "policyDigest": "6989a1add9442620e5550b685183094e1c83a5ff2caaff07e1899ddb37bde47b",
   "adapter": "fixture-v1",
   "lane": "deterministic",
   "cases": [
@@ -40,7 +40,7 @@
           "evaluator": "grounding",
           "passed": true,
           "score": 1,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -107,7 +107,7 @@
           "evaluator": "grounding",
           "passed": true,
           "score": 1,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -174,7 +174,7 @@
           "evaluator": "grounding",
           "passed": true,
           "score": 1,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -241,7 +241,7 @@
           "evaluator": "grounding",
           "passed": false,
           "score": 0.1875,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -308,7 +308,7 @@
           "evaluator": "grounding",
           "passed": true,
           "score": 1,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -375,7 +375,7 @@
           "evaluator": "grounding",
           "passed": false,
           "score": 0.5,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -442,7 +442,7 @@
           "evaluator": "grounding",
           "passed": true,
           "score": 1,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -509,7 +509,7 @@
           "evaluator": "grounding",
           "passed": false,
           "score": 0.2,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -576,7 +576,7 @@
           "evaluator": "grounding",
           "passed": true,
           "score": 0.8888888888888888,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -643,7 +643,7 @@
           "evaluator": "grounding",
           "passed": false,
           "score": 0,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -710,7 +710,7 @@
           "evaluator": "grounding",
           "passed": true,
           "score": 1,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -777,7 +777,7 @@
           "evaluator": "grounding",
           "passed": true,
           "score": 1,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -844,7 +844,7 @@
           "evaluator": "grounding",
           "passed": true,
           "score": 0.875,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -911,7 +911,7 @@
           "evaluator": "grounding",
           "passed": true,
           "score": 0.8,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",
@@ -978,7 +978,7 @@
           "evaluator": "grounding",
           "passed": true,
           "score": 0.7272727272727273,
-          "explanation": "Unique content-token overlap is a heuristic, not proof of truth."
+          "explanation": "Unique normalized-token overlap is a heuristic, not proof of truth."
         },
         {
           "evaluator": "refusal",

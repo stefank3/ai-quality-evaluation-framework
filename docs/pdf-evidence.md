@@ -6,11 +6,11 @@ The generator fixes PDF timestamps and metadata. Identical source and pinned too
 
 Validation checks the `%PDF-` signature, nonzero page count, reasonable size (10 KB–5 MB), extractable text, all 30 expected chapter headings and internal bookmarks. Page numbers and a clickable contents table support navigation. Code blocks have an enforced maximum line length and use a dedicated monospace style.
 
-The reviewed workbook contains 32 A4 pages: title, contents and 30 study units. The PDF is approximately 72 KB; exact bytes and SHA-256 are recorded in milestone validation evidence rather than embedded in the PDF itself.
+The correction-pass workbook contains **32 A4 pages, 72,780 bytes and all 30 chapter headings**. Its SHA-256 is `245a0b6590e1bd3a0059d742aa40e78b8b9ba0f9872f2eeeb23faefc25c69b7e`. Two consecutive `npm run docs:pdf` runs with ReportLab 4.4.9 and pypdf 6.10.0 produced byte-identical output. Signature, extractable text, headings and bookmarks passed the generator's validation.
 
-Implementation source snapshot: `424204c4d0336cd89afb1b3d53180ad5c2849dac`. The final milestone commit records that snapshot in the canonical title page and regenerates the PDF. This two-commit sequence is one implementation milestone and prevents a self-referential commit hash inside its own generated artifact.
+Review baseline: `0b8c95b38891a8172f73b3b086b9b50851db9010`. The containing correction commit records the updated implementation, canonical Markdown and PDF together. The title page identifies this relationship and policy 1.0.1; the final commit hash belongs in external PR evidence rather than inside its own artifact.
 
-Visual review uses Poppler to render all pages, followed by contact-sheet inspection and full-page inspection of representative title, contents and code pages. The initial review identified an avoidable contents spill; its spacing was corrected before final generation. No clipped content or overlapping elements remained in the reviewed output.
+All 32 pages were rendered with Poppler and reviewed as contact sheets, with title, contents and scoring pages inspected at full size. No clipped content or overlapping elements were found. Poppler emitted a missing optional Symbol display-font warning; the rendered pages and extracted chapter text were intact.
 
 To repeat the visual check with Poppler installed:
 

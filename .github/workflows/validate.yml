@@ -4,7 +4,7 @@
 name: Deterministic validation
 on:
   push:
-    branches: [main, milestone/1-evaluation-foundation]
+    branches: [main]
   pull_request:
     branches: [main]
 permissions:

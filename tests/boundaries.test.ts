@@ -16,6 +16,56 @@ const request = {
   input: "synthetic input",
   context: [{ id: "kb-test", title: "Test", text: "synthetic evidence" }],
 };
+const authorizedEnvironment = {
+  AI_EVAL_LIVE: "I_AUTHORIZE_LIVE",
+  AI_EVAL_MODEL: config.model,
+  AI_EVAL_ENDPOINT: config.endpoint,
+  AI_EVAL_MAX_CASES: "1",
+  AI_EVAL_TIMEOUT_MS: "100",
+};
+it.each([{ CI: "true" }, { CI: "" }, { GITHUB_ACTIONS: "true" }])(
+  "rejects otherwise valid live configuration with CI marker %j",
+  (marker) => {
+    expect(() =>
+      parseConfig(["live"], { ...authorizedEnvironment, ...marker }),
+    ).toThrow("Configuration");
+  },
+);
+it("parses fully authorized manual live settings outside CI", () => {
+  expect(
+    parseConfig(["live", "--case", "grounded-answer"], authorizedEnvironment),
+  ).toEqual({ command: "live", caseId: "grounded-answer", live: config });
+});
+it.each(["1", "20"])("converts the valid case-count boundary %s", (value) => {
+  expect(
+    parseConfig(["live"], {
+      ...authorizedEnvironment,
+      AI_EVAL_MAX_CASES: value,
+    }).live?.maxCases,
+  ).toBe(Number(value));
+});
+it.each([undefined, "", "0", "21", "1.5", "NaN", "Infinity", "invalid"])(
+  "rejects invalid live case count %s",
+  (value) => {
+    expect(() =>
+      parseConfig(["live"], {
+        ...authorizedEnvironment,
+        AI_EVAL_MAX_CASES: value,
+      }),
+    ).toThrow("Configuration");
+  },
+);
+it.each([
+  ["CI", "true"],
+  ["CI", ""],
+  ["GITHUB_ACTIONS", "true"],
+])("adapter rejects %s=%s before any transport call", (name, value) => {
+  localEnvironment();
+  vi.stubEnv(name, value);
+  const transport = vi.fn<typeof fetch>();
+  expect(() => new LiveAdapter(config, transport)).toThrow("Configuration");
+  expect(transport).not.toHaveBeenCalled();
+});
 /** Temporarily remove CI markers for in-memory transport tests; restored after each test. */
 function localEnvironment(): void {
   vi.stubEnv("CI", undefined);

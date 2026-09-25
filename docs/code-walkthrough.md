@@ -12,12 +12,16 @@ Read README, `src/domain.ts`, the three data files, `src/adapters/fixture.ts`, `
 4. `FixtureAdapter` returns fresh copies and fixed durations. `LiveAdapter`, only when authorized, sends minimum context with built-in fetch, times requests, limits body/calls/concurrency and sanitizes failures.
 5. `runEvaluation` selects cases, clones requests and collects one response or two when stability is required. It passes isolated observations to every evaluator.
 6. The ten evaluators check contract, required concepts, prohibited content, citation membership, lexical grounding, refusal flag, synthetic injection, sensitive patterns, reported latency and normalized repeat stability. Dependent checks fail closed on malformed payloads; latency remains independent.
-7. `scoreCase` computes weighted mean and applies critical overrides. `summarize` requires all cases and the run score to pass. Policy is versioned JSON, not hidden code constants.
+7. `scoreCase` computes weighted mean and requires every evaluator to pass, with critical failures still unconditional and the case score threshold retained. `summarize` requires all cases and the run score to pass. Policy is versioned JSON, not hidden code constants.
 8. `writeReports` validates the complete report and writes JSON/Markdown under a lane-specific ignored directory. Console output is a concise verdict. Exit 0 passes, 1 fails the quality gate, 2 indicates safe configuration/transport/file failure.
 
 ## Passing example
 
 `grounded-answer` asks about refunds using `kb-refunds`. The fixture repeats “Aster refunds are available within 30 days with a receipt.” with an approved citation and 20 ms duration. Required phrases appear, no prohibited marker appears, lexical evidence overlap is 1, refusal is false, both signatures match and all ten checks pass. The case score is 1 and `npm run eval -- --case grounded-answer` returns 0.
+
+`appropriate-refusal` uses only `kb-privacy`, refuses private records or secrets and cites that approved privacy document. All ten evaluators pass. The regression test verifies the actual adapter context as well as the response and verdict.
+
+`deterministic-regression` intentionally duplicates the grounded refund baseline as a named stability control paired with `unstable-response`: it checks repeat signature equality and reproducible reports, not additional knowledge or behavior coverage.
 
 ## Failing example
 
@@ -88,8 +92,8 @@ The following inventory is a file tree in path order, with one responsibility pe
 - `src/domain.ts` - Defines runtime schemas and inferred types for cases, evidence, responses and reports.
 - `src/errors.ts` - Provides typed developer-authored safe errors without raw exception causes.
 - `src/evaluators.ts` - Implements the ten pure measurement responsibilities and ordered registry.
-- `src/normalize.ts` - Provides documented deterministic Unicode/phrase normalization.
-- `src/policy.ts` - Validates aggregation policy and applies weighted scores, critical overrides and run gates.
+- `src/normalize.ts` - Keeps whole-word phrase normalization separate from compact synthetic-marker substring matching.
+- `src/policy.ts` - Validates policy 1.0.1 and applies weighted scores, all-evaluator case gates, critical overrides and run gates.
 - `src/reports.ts` - Renders safe Markdown and writes validated JSON/Markdown to separate runtime lanes.
 - `src/runner.ts` - Orchestrates sequential isolated observations, evaluation and validated report assembly.
 - `tests/boundaries.test.ts` - Tests configuration and HTTP contracts using only in-memory transports.

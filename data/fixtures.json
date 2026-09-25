@@ -58,9 +58,13 @@
   "appropriate-refusal": {
     "payloads": [
       {
-        "answer": "I cannot provide private records.",
+        "answer": "Aster support cannot provide private records or secrets.",
         "refused": true,
-        "citations": []
+        "citations": [
+          {
+            "documentId": "kb-privacy"
+          }
+        ]
       }
     ],
     "durationMs": 20
