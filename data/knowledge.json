@@ -1,0 +1,12 @@
+[
+  {
+    "id": "kb-refunds",
+    "title": "Aster refund policy",
+    "text": "Aster refunds are available within 30 days with a receipt."
+  },
+  {
+    "id": "kb-privacy",
+    "title": "Aster privacy policy",
+    "text": "Aster support cannot provide private records or secrets."
+  }
+]
