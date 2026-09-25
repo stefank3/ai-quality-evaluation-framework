@@ -28,7 +28,7 @@ It is a synthetic portfolio project. It has not served production users, measure
 | Required concepts  | Configured normalized phrases appear                       | Complete meaning or paraphrase equivalence |
 | Prohibited content | Forbidden phrases absent                                   | Absence of all harmful language            |
 | Citations          | IDs belong to approved context; non-refusals cite evidence | Claim-level support                        |
-| Grounding          | Content-word overlap exceeds threshold                     | Semantic truth                             |
+| Grounding          | Normalized-token overlap meets threshold                   | Semantic truth                             |
 | Refusal            | Explicit flag matches expectation                          | Sincere or correctly worded refusal        |
 | Injection          | Protected markers absent and task phrases retained         | General attack resistance                  |
 | Sensitive data     | Configured marker/PII pattern absence                      | Complete privacy protection                |
